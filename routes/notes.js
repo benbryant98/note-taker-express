@@ -36,7 +36,7 @@ note.post("/", (req, res) => {
 note.delete("/:id", (req, res) => {
   const { id } = req.body;
 
-  const notesData = JSON.parse(fs.readFromFile("./db/db.json"));
+  const notesData = JSON.parse(readFromFile("./db/db.json"));
   const i = notesData.findIndex((note) => note.id === id);
   const updatedData = notesData.splice(i, 1);
   writeToFile(updatedData, "./db/db.json");
