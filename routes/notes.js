@@ -2,7 +2,6 @@ const note = require("express").Router();
 const {
   readFromFile,
   readAndAppend,
-  readFromFile,
   writeToFile,
 } = require("../helpers/fsUtils");
 const uuid = require("../helpers/uuid");
