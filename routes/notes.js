@@ -38,7 +38,7 @@ note.delete("/:id", (req, res) => {
 
   readFromFile("./db/db.json").then((data) => {
     const i = data.findIndex((note) => note.id === id);
-    const updatedData = data.splice(i, 1);
+    const updatedData = JSON.parse(data.splice(i, 1));
     writeToFile(updatedData, "./db/db.json");
   });
   res.send("Deleted note.");
