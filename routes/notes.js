@@ -36,12 +36,12 @@ note.post("/", (req, res) => {
 note.delete("/:id", (req, res) => {
   const { id } = req.body;
 
-  console.log(data);
-  const i = data.findIndex((note) => note.id === id);
-  const updatedData = data.splice(i, 1);
-  writeToFile(updatedData, "./db/db.json");
-
-  res.json(JSON.parse(data));
+  readFromFile("./db/db.json").then((data) => {
+    const i = data.findIndex((note) => note.id === id);
+    const updatedData = data.splice(i, 1);
+    writeToFile(updatedData, "./db/db.json");
+  });
+  res.send("Deleted note.");
 });
 
 module.exports = note;
